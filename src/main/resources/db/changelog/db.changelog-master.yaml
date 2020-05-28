@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-opinion
+      author: mkocemba
+      changes:
+        - createTable:
+            tableName: opinions
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    - primaryKeyName: id_opinion_pk
+                    - primaryKey: true
+                    - nullable: false
+              - column:
+                  name: company
+                  type: varchar(20)
+                  constraints:
+                    - nullable: false
+              - column:
+                  name: city
+                  type: varchar(20)
+              - column:
+                  name: application_date
+                  type: date
+              - column:
+                  name: description
+                  type: varchar(10000)
+  - changeSet:
+      id: opinions-initial-data
+      author: mkocemba
+      changes:
+        - insert:
+            tableName: opinions
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: company
+                  value: Lideo
+              - column:
+                  name: city
+                  value: Wrocław
+              - column:
+                  name: description
+                  value: Lipa

@@ -1,15 +1,22 @@
 package pl.opinion.model;
 
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
-@RequiredArgsConstructor
+@Entity(name="opinions")
+@NoArgsConstructor
 public class Opinion {
 
-    private final Integer id;
-    private final String company;
-    private final String city;
-    private final LocalDate applicationDate;
-    private final String description;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String company;
+    private String city;
+    private LocalDate applicationDate;
+    private String description;
 }
