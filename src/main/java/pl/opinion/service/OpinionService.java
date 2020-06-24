@@ -12,7 +12,12 @@ import java.util.List;
 public class OpinionService {
 
     private final OpinionRepository opinionRepository;
-    public List<Opinion> getOpinions(String query) {
-        return opinionRepository.findAll();
+
+    public List<Opinion> getOpinions(String company) {
+        return opinionRepository.findByCompanyContainingIgnoreCase(company);
+    }
+
+    public Opinion getOpinionById(Long id) {
+        return opinionRepository.findById(id).orElseThrow(() -> new RuntimeException("No opinion given id" + id));
     }
 }

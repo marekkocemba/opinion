@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style>
+            .main{
+                padding: 10px 5%
+            }
+            .tipItem{
+                cursor: pointer;
+                position:fixed;
+                top:0px;
+                width: 90%;
+            }
+        </style>
+        <script>
+            function getCompanyNameTips(){
+                let input = $("#inputCompanyName").val();
+                if(input != null && input.length > 0){
+                    $.getJSON( "/opinions?company=" + input, function( response, status ) {
+                        if(status === "success"){
+                            clearTips();
+                            renderTips(response);
+                        } else{
+                            alert("problem z polaczeniem");
+                        }
+                    });
+                }
+            }
+
+            function clearTips(){
+                $(".tipItem").remove();
+            }
+
+            function renderTips(opinions){
+                let top = 80;
+
+                for(let i = 0; i < opinions.length; i++){
+                    $(".main").append(
+                        "<div class='tipItem form-control' style='top:"+ top +"px;' onclick='clearTipsAndShowOpinionById("+ opinions[i].id +")'>"
+                                + opinions[i].company + " - " + opinions[i].city +
+                        "</div>"
+                    );
+                    top = top + 38;
+                }
+            }
+
+            function clearTipsAndShowOpinionById(id){
+                $.getJSON( "/opinions/" + id, function( response, status ) {
+                    if(status === "success"){
+                        clearTips();
+                        $("#inputCompanyName").val(response.company)
+                        renderOpinion(response);
+                    } else{
+                        alert("problem z polaczeniem");
+                    }
+                });
+            }
+
+            function renderOpinion(opinion){
+                $("#city").val(opinion.city)
+                $("#applicationDate").val(opinion.applicationDate)
+                $("#description").val(opinion.description)
+            }
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <label for="inputCompanyName">Nazwa firmy:</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="inputCompanyName"
+                    aria-describedby="inputCompanyNameHelp"
+                    placeholder="Wpisz nazwę firmy ..."
+                    onkeyup="getCompanyNameTips()"
+            >
+            <small id="inputCompanyNameHelp" class="form-text text-muted"></small>
+
+            <label for="city">Miasto:</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="city"
+                    disabled="true"
+            >
+
+            <label for="applicationDate">Data aplikacji:</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="applicationDate"
+                    disabled="true"
+            >
+
+            <label for="description">Opis:</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    disabled="true"
+            >
+        </div>
+    </body>
+</html>

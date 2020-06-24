@@ -14,7 +14,12 @@ public class OpinionController {
     private final OpinionService opinionService;
 
     @GetMapping("/opinions")
-    public List<Opinion> getOpinions(@RequestParam String query ){
-        return opinionService.getOpinions(query);
+    public List<Opinion> getOpinions(@RequestParam String company){
+        return opinionService.getOpinions(company);
+    }
+
+    @GetMapping("/opinions/{id}")
+    public Opinion getOpinionById(@PathVariable Long id){
+        return opinionService.getOpinionById(id);
     }
 }

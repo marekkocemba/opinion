@@ -2,14 +2,12 @@ package pl.opinion.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity(name="opinions")
+@Getter
 @NoArgsConstructor
+@Entity(name="opinions")
 public class Opinion {
 
     @Id
@@ -17,6 +15,7 @@ public class Opinion {
     private Long id;
     private String company;
     private String city;
-    private LocalDate applicationDate;
+    @Column(name = "application_date")
+    private String applicationDate;
     private String description;
 }
