@@ -11,13 +11,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OpinionService {
 
-    private final OpinionRepository opinionRepository;
+    //private final OpinionRepository opinionRepository;
 
     public List<Opinion> getOpinions(String company) {
-        return opinionRepository.findByCompanyContainingIgnoreCase(company);
+        return null;//opinionRepository.findByCompanyContainingIgnoreCase(company);
     }
 
     public Opinion getOpinionById(Long id) {
-        return opinionRepository.findById(id).orElseThrow(() -> new RuntimeException("No opinion given id" + id));
+        return null;//opinionRepository.findById(id).orElseThrow(() -> new RuntimeException("No opinion given id" + id));
     }
 }

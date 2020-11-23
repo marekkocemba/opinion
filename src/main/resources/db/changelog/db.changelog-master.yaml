@@ -50,3 +50,111 @@ databaseChangeLog:
               - column:
                   name: application_date
                   value: Sezon 2018/19, pierwsze sniegi.
+        - insert:
+            tableName: opinions
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: company
+                  value: Tieto
+              - column:
+                  name: city
+                  value: Wrocław
+              - column:
+                  name: description
+                  value: Podglądając przez pracuj.txt, aplikacja odrzucona. Znajomi Seweryna?
+              - column:
+                  name: application_date
+                  value: 2018 lub 2019 rok.
+        - insert:
+            tableName: opinions
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: company
+                  value: Grape Up
+              - column:
+                  name: city
+                  value: Wrocław
+              - column:
+                  name: description
+                  value: Ciezka przeprawa na rozmowie technicznej (Konrad). Rzucilem sluchawka.
+              - column:
+                  name: application_date
+                  value: maj 2020
+        - insert:
+            tableName: opinions
+            columns:
+              - column:
+                  name: id
+                  value: 4
+              - column:
+                  name: company
+                  value: DEVQUBE
+              - column:
+                  name: city
+                  value: Wrocław
+              - column:
+                  name: description
+                  value: Aplikacja w jednej chwili otwarta , wyslane podziekowanie i odrzucenie. Wszystko w jednej chwili. Znaja mnie ?
+              - column:
+                  name: application_date
+                  value: czerwiec 2020
+        - insert:
+            tableName: opinions
+            columns:
+              - column:
+                  name: id
+                  value: 5
+              - column:
+                  name: company
+                  value: Atos
+              - column:
+                  name: city
+                  value: Wrocław
+              - column:
+                  name: description
+                  value: Gadalem z z technicznym 2 godziny i cisza. Atos chyba tak ma.
+              - column:
+                  name: application_date
+                  value: maj 2020
+        - insert:
+            tableName: opinions
+            columns:
+              - column:
+                  name: id
+                  value: 6
+              - column:
+                  name: company
+                  value: PayEye
+              - column:
+                  name: city
+                  value: Wrocław
+              - column:
+                  name: description
+                  value: Niestety zlapal mnie na klamstwie bo pracowalem juz w Unity a nie Exence.
+              - column:
+                  name: application_date
+                  value: lipiec 2019
+        - insert:
+            tableName: opinions
+            columns:
+              - column:
+                  name: id
+                  value: 6
+              - column:
+                  name: company
+                  value: ENGINIETY
+              - column:
+                  name: city
+                  value: Wrocław
+              - column:
+                  name: description
+                  value: Blisko rynku, rozmowa, rozmowa i nic z tego nie wynikło. Był tam były pracownik Exence
+              - column:
+                  name: application_date
+                  value: lipiec 2019
